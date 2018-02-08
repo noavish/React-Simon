@@ -15,7 +15,7 @@ class Game extends Component {
 
     createBoxes() {
         return this.state.colors.map((color, index)=>{
-            return <Box key={index+1} colorIndex={index+1} item={color} playerClicked={this.props.playerClicked}/>
+            return <Box key={index+1} colorIndex={index+1} item={color} data-id={index+1} playerClicked={this.props.playerClicked}/>
 
         });
     }

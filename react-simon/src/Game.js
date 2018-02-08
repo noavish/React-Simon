@@ -14,11 +14,12 @@ class Game extends Component {
     }
 
     playerClicked(e) {
-        console.log(e)
+        console.log(e.target.dataset.id)
         let choise = e.target.dataset.id;
         this.setState({ userChoose: this.state.userChoose.concat(choise) }, () => {
             console.log(`userChoose ${this.state.userChoose}`);
             if (this.state.sequence.length == this.state.userChoose.length) {
+                console.log(this.state)
                 if (this.state.sequence[this.state.sequence.length - 1] != parseInt(this.state.userChoose[this.state.userChoose.length - 1])) {
                     alert('Game Over!');
                 } else {

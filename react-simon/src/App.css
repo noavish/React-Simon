@@ -69,6 +69,7 @@ body{
   -webkit-border-radius: 50%;
   border-right-width: 0px;
   border-left-width: 0px;
+  animation:pulse-yellow 0.5s infinite alternate;
   
 }
 
@@ -83,7 +84,7 @@ body{
   -webkit-border-radius: 50%;
   border-right-width: 0px;
   border-left-width: 0px;
-
+  animation:pulse-red 0.5s infinite alternate;
   
 }
 
