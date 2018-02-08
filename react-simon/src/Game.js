@@ -11,50 +11,30 @@ class Game extends Component {
         this.state = ({sequence:[], userChoose: []});
     }
 
-    computreTurn(sequence) {
-        for (var i = 0; i < sequence.length; i++) {
-            alert(sequence[i]);
-        }
-    }
-
-    playerTurn(sequence) {
-        for (var i = 0; i < sequence.length; i++) {
-            // var choise =
-            // if (choise!= sequence[i]){
-            //     return false;
-            // }
-        }
-        return true;
-    }
-
     playerClicked(e){
         let choise = e.target.dataset.id;
         this.setState({userChoose: this.state.userChoose.concat(choise)}, ()=> {
-            console.log(this.state.userChoose);
+            console.log(`userChoose ${this.state.userChoose}`);
+            if (this.state.sequence.length == this.state.userChoose.length) {
+                if (this.state.sequence[this.state.sequence.length-1] != parseInt(this.state.userChoose[this.state.userChoose.length-1])) {
+                    alert('Game Over!');
+                } else {
+                    this.startGame();
+                }
+            }
         });
+
     }
 
 
-    startGame(e) {
-        // var sequence = [];
-        // var score=0;
-
-            // for (var i = 0; i < 2; i++) {
-            var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
-            this.setState({sequence: this.state.sequence.concat(rand)}, ()=> {
-               console.log(this.state.sequence);
+    startGame() {
+        var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
+        this.setState({sequence: this.state.sequence.concat(rand)}, ()=> {
+           console.log(`computerChoose ${this.state.sequence}`);
+            this.setState({userChoose: []}, ()=> {
+                console.log(this.state)
             });
-            // sequence = sequence.concat(rand);
-            // this.computreTurn(sequence);
-            // var result = this.playerTurn(sequence, e);
-            // if (result == false) {
-            //     alert("game over");
-            //     return;
-            // }
-            // score++;
-        // }
-
-        // console.log("you won")
+        });
     }
 
     render() {
