@@ -8,6 +8,7 @@ class Game extends Component {
         super(props);
         this.startGame = this.startGame.bind(this);
         this.playerClicked = this.playerClicked.bind(this);
+        this.restartGame = this.restartGame.bind(this);
         this.state = ({ sequence: [], userChoose: [], colors: ['green', 'blue', 'yellow', 'red'], rColors: ['green', 'blue', 'yellow', 'red'], blinkColors: ['green green-blink', 'blue blue-blink', 'yellow yellow-blink', 'red red-blink'] });
     }
 
@@ -26,6 +27,19 @@ class Game extends Component {
         });
 
     }
+
+
+    restartGame(){
+        console.log(this.props)
+        this.setState({sequence:[]}, ()=> {
+           
+        });
+        this.setState({userChoose:[]}, ()=> {
+            console.log(this.state)
+        });
+        this.props.clearScore();
+    }
+
 
     blink(sequence) {
         for (var i = 0; i < sequence.length; i++) {
@@ -49,6 +63,7 @@ class Game extends Component {
 
     }
 
+
     startGame() {
         var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
         this.setState({ sequence: this.state.sequence.concat(rand) }, () => {
@@ -61,10 +76,12 @@ class Game extends Component {
     }
 
     render() {
+      
         return (
             <div className="game">
                 <Boxes playerClicked={this.playerClicked} color={this.state.colors} />
                 <button type='button' className='startGame' onClick={this.startGame} > Start playing </button>
+                <button type='button' className='restartGame'  onClick={this.restartGame} > Restart Game </button>
             </div>
         );
     }

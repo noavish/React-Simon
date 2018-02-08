@@ -102,10 +102,18 @@ body{
   animation:pulse-yellow 0.5s infinite alternate;
 
 }
+.play-sound{
+  width: 200px;
+  height: 200px;
+}
 
 
 .startGame{
   font-family: 'Pacifico', cursive;
+}
+.restartGame{
+  font-family: 'Pacifico', cursive;
+
 }
 
 .startGame:active{

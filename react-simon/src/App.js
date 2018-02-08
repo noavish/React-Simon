@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import Game from './Game.js'
-import Playsound from './Playesound'
+
 
 class App extends Component {
     constructor(props){
         super(props);
         this.state = ({score: 0});
         this.updateScore = this.updateScore.bind(this);
+        this.clearScore = this.clearScore.bind(this);
+    }
+
+    clearScore(){
+        this.setState({score: 0}, ()=> {
+            console.log(this.state)
+        });
     }
 
     updateScore(){
@@ -21,8 +28,7 @@ class App extends Component {
         return (
           <div className="App">
               <h3>{this.state.score}</h3>
-              <Game updateScore={this.updateScore}/>
-              <button type='button' className='startGame '> Start playing </button>
+              <Game updateScore={this.updateScore} clearScore={this.clearScore}/>
           </div>
         );
     }
