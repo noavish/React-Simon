@@ -14,7 +14,6 @@ class App extends Component {
           <div className="App">
               <h3>{this.state.score}</h3>
               <Game />
-              <button type='button' className='startGame'> Start playing </button>
           </div>
         );
     }

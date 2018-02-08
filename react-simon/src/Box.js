@@ -8,9 +8,8 @@ class Box extends Component {
 
     render() {
         return (
-            <div className="boxes">
-                <div idname={this.props.className} color={this.props.color}></div>
-            </div>
+            <div idname={this.props.idname} color={this.props.color} index={this.props.colorIndex}></div>
+
         );
     }
 }

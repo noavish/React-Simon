@@ -5,7 +5,7 @@ import Box from './Box.js'
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = ({colors: ['green', 'blue', 'yellow', 'green']});
+        this.state = ({colors: [{id: 1, color:'green'}, {id: 2, color:'blue'}, {id: 3, color:'yellow'}, {id: 4, color:'red'}]});
     }
 
     createBoxes() {
@@ -16,12 +16,8 @@ class Game extends Component {
 
     render() {
         return (
-            <div className="game">
+            <div className="boxes">
                 {this.createBoxes()}
-                {/*<Box className='box green' color='green' data-id="1"></Box>*/}
-                {/*<Box className='box blue' color='blue' data-id="2"></Box>*/}
-                {/*<Box className='box yellow' color='yellow' data-id="3"></Box>*/}
-                {/*<Box className='box red' color='red' data-id="4"></Box>*/}
             </div>
         );
     }
