@@ -6,17 +6,43 @@ import Boxes from './Boxes.js'
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = ({sequence: []})
+        this.startGame = this.startGame.bind(this);
+        this.playerClicked = this.playerClicked.bind(this);
+        this.state = ({sequence:[], userChoose: []});
+    }
+
+    playerClicked(e){
+        let choise = e.target.dataset.id;
+        this.setState({userChoose: this.state.userChoose.concat(choise)}, ()=> {
+            console.log(`userChoose ${this.state.userChoose}`);
+            if (this.state.sequence.length == this.state.userChoose.length) {
+                if (this.state.sequence[this.state.sequence.length-1] != parseInt(this.state.userChoose[this.state.userChoose.length-1])) {
+                    alert('Game Over!');
+                } else {
+                    this.props.updateScore();
+                    this.startGame();
+                }
+            }
+        });
+
+    }
+
+
+    startGame() {
+        var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
+        this.setState({sequence: this.state.sequence.concat(rand)}, ()=> {
+           console.log(`computerChoose ${this.state.sequence}`);
+            this.setState({userChoose: []}, ()=> {
+                console.log(this.state)
+            });
+        });
     }
 
     render() {
         return (
             <div className="game">
-                <Boxes />
-                {/*<Box className='box green' color='green' data-id="1"></Box>*/}
-                {/*<Box className='box blue' color='blue' data-id="2"></Box>*/}
-                {/*<Box className='box yellow' color='yellow' data-id="3"></Box>*/}
-                {/*<Box className='box red' color='red' data-id="4"></Box>*/}
+                <Boxes playerClicked={this.playerClicked}/>
+                <button type='button' className='startGame' onClick={this.startGame} > Start playing </button>
             </div>
         );
     }

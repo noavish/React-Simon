@@ -8,9 +8,7 @@ class Box extends Component {
 
     render() {
         return (
-            <div className="boxes">
-               <button type='button' className={this.props.className} color={this.props.color}></button>
-            </div>
+            <div className={this.props.className} color={this.props.color} data-id={this.props.colorIndex} onClick={this.props.playerClicked}></div>
         );
     }
 }
