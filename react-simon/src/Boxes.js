@@ -5,7 +5,7 @@ import Box from './Box.js'
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = ({colors: ['green', 'blue', 'yellow', 'green']});
+        this.state = ({colors: ['green', 'red', 'blue', 'yellow']});
     }
 
     createBoxes() {

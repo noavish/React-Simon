@@ -9,7 +9,7 @@ class Box extends Component {
     render() {
         return (
             <div className="boxes">
-                <div idname={this.props.className} color={this.props.color}></div>
+               <button type='button' className={this.props.className} color={this.props.color}></button>
             </div>
         );
     }
