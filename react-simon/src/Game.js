@@ -7,6 +7,8 @@ class Game extends Component {
     constructor(props){
         super(props);
         this.startGame = this.startGame.bind(this);
+        this.playerClicked = this.playerClicked.bind(this);
+        this.state = ({sequence:[], userChoose: []});
     }
 
     computreTurn(sequence) {
@@ -17,15 +19,21 @@ class Game extends Component {
 
     playerTurn(sequence) {
         for (var i = 0; i < sequence.length; i++) {
-            var choise=prompt("enter the right number");
-            if (choise!= sequence[i]){
-                return false;
-            }
+            // var choise =
+            // if (choise!= sequence[i]){
+            //     return false;
+            // }
         }
         return true;
     }
 
-    startGame() {
+    playerClicked(e){
+        let choise = e.target.dataset.id;
+        return choise;
+    }
+
+
+    startGame(e) {
         var sequence = [];
         var score=0;
 
@@ -33,7 +41,7 @@ class Game extends Component {
             var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
             sequence = sequence.concat(rand);
             this.computreTurn(sequence);
-            var result = this.playerTurn(sequence);
+            var result = this.playerTurn(sequence, e);
             if (result == false) {
                 alert("game over");
                 return;
@@ -47,8 +55,8 @@ class Game extends Component {
     render() {
         return (
             <div className="game">
-                <Boxes />
-                <button type='button' className='startGame' onClick={this.startGame}> Start playing </button>
+                <Boxes playerClicked={this.playerClicked}/>
+                <button type='button' className='startGame' onClick={this.startGame} > Start playing </button>
             </div>
         );
     }

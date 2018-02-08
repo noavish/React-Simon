@@ -8,7 +8,7 @@ class Box extends Component {
 
     render() {
         return (
-            <div idname={this.props.idname} color={this.props.color} index={this.props.colorIndex}></div>
+            <div className={this.props.className} color={this.props.color} data-id={this.props.colorIndex} onClick={this.props.playerClicked}></div>
 
         );
     }
