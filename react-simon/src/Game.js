@@ -19,6 +19,7 @@ class Game extends Component {
                 if (this.state.sequence[this.state.sequence.length-1] != parseInt(this.state.userChoose[this.state.userChoose.length-1])) {
                     alert('Game Over!');
                 } else {
+                    this.props.updateScore();
                     this.startGame();
                 }
             }
