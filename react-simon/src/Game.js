@@ -9,10 +9,12 @@ class Game extends Component {
         this.startGame = this.startGame.bind(this);
         this.playerClicked = this.playerClicked.bind(this);
         this.restartGame = this.restartGame.bind(this);
+        this.blink = this.blink.bind(this)
         this.state = ({ sequence: [], userChoose: [], colors: ['green', 'blue', 'yellow', 'red'], rColors: ['green', 'blue', 'yellow', 'red'], blinkColors: ['green green-blink', 'blue blue-blink', 'yellow yellow-blink', 'red red-blink'] });
     }
 
     playerClicked(e) {
+        console.log(e)
         let choise = e.target.dataset.id;
         this.setState({ userChoose: this.state.userChoose.concat(choise) }, () => {
             console.log(`userChoose ${this.state.userChoose}`);
@@ -46,7 +48,7 @@ class Game extends Component {
             var flag=0;
             this.state.colors.map((color, j) => {
                 if(j+1==sequence[i]){
-                    return setTimeout( () => {state.blinkColors[j]},3000);
+                    return setTimeout( () => {this.state.blinkColors[j]},3000);
                 }
                 else return color;
             })
@@ -67,7 +69,7 @@ class Game extends Component {
     startGame() {
         var rand = Math.ceil(Math.random() * 4); //adiing random between 1-4 to sequence
         this.setState({ sequence: this.state.sequence.concat(rand) }, () => {
-            blink(this.state.sequence);
+            this.blink(this.state.sequence);
             console.log(`computerChoose ${this.state.sequence}`);
             this.setState({ userChoose: [] }, () => {
                 console.log(this.state)
@@ -76,10 +78,10 @@ class Game extends Component {
     }
 
     render() {
-      
+    //   console.log(this.state.sequence)
         return (
             <div className="game">
-                <Boxes playerClicked={this.playerClicked} color={this.state.colors} />
+                <Boxes playerClicked={this.playerClicked} colors={this.state.colors} />
                 <button type='button' className='startGame' onClick={this.startGame} > Start playing </button>
                 <button type='button' className='restartGame'  onClick={this.restartGame} > Restart Game </button>
             </div>

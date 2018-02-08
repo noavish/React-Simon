@@ -13,7 +13,6 @@ class Playsound extends React.Component {
         x.play();
     }
     render() {
-        console.log(this.props)
         return (
             <div className="play-sound">
                 <audio id="myID" >
