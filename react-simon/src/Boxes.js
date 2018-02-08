@@ -5,12 +5,12 @@ import Box from './Box.js'
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = ({colors: [{id: 1, color:'green'}, {id: 2, color:'blue'}, {id: 3, color:'yellow'}, {id: 4, color:'red'}]});
+        this.state = ({colors: ['green', 'blue', 'yellow', 'red']});
     }
 
     createBoxes() {
         return this.state.colors.map((color, index)=>{
-            return <Box key={index+1} colorIndex={index+1} className={color} />
+            return <Box key={index+1} colorIndex={index+1} className={color} playerClicked={this.props.playerClicked}/>
         });
     }
 
