@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Game from './Game.js'
+import Playsound from './Playesound'
 
 class App extends Component {
     constructor(props){
@@ -21,6 +22,7 @@ class App extends Component {
           <div className="App">
               <h3>{this.state.score}</h3>
               <Game updateScore={this.updateScore}/>
+              <button type='button' className='startGame '> Start playing </button>
           </div>
         );
     }
